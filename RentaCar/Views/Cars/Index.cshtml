@@ -1,0 +1,59 @@
+﻿@model IEnumerable<RentaCar.Models.Car>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1 class="mt-5">Cars</h1>
+
+<p class="h4 mt-3">
+    @Html.ActionLink("Add Car", "Create")
+</p>
+
+<table class="table  table-striped mt-5">
+    <tr class="table-dark fs-5">
+        <th>
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LicensePlate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Available)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="table-light  fs-4 ">
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LicensePlate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Available.Value)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CarId }, new { @class = "nav-item text-decoration-none text-warning " })  |
+                @Html.ActionLink("Details", "Details", new { id = item.CarId }, new { @class = "nav-item text-decoration-none text-primary " })  |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CarId }, new { @class = "nav-item text-decoration-none text-danger " })
+            </td>
+        </tr>
+    }
+
+</table>
