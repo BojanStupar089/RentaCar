@@ -2,30 +2,49 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="container-fluid p-5 bg-light">
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <img class=" img-fluid  img-thumbnail" style="height:250px;width:500px;" alt="@ViewBag.Title" src="~/Content/Images/audi.jpg" />
+        </div>
+
+        <div class="col-md-4">
+
+            <img class=" img-fluid img-thumbnail" style="height:250px;width:500px;" alt="@ViewBag.Title" src="~/Content/Images/bmw.jpg" />
+        </div>
+
+        <div class="col-md-4">
+
+            <img class="img-fluid img-thumbnail" style="height:250px;width:500px;" alt="@ViewBag.Title" src="~/Content/Images/skoda.jpg" />
+        </div>
+    </div>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+        <h2 class="mt-3">AUDI</h2>
+        <p class="mb-0 lead fs-5">
+            Audi is a  German automotive manufacturer of luxury vehicles headquartered in Ingolstadt, Bavaria, Germany.
+            As a subsidiary of its parent company, the Volkswagen Group, Audi produces vehicles in nine production facilities worldwide.
+
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p><a class="btn btn-success btn-lg" href="https://www.audi.com">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2 class="mt-3">BMW</h2>
+        <p class="lead fs-5">
+            Bayerische Motoren Werke AG, abbreviated as BMW, is a German multinational manufacturer of passenger motor vehicles and motorcycles headquartered in Munich, Bavaria, Germany. 
+             
+          
+        </p>
+        <p><a class="btn btn-success btn-lg" href="https://www.bmw.com">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2 class="mt-3">ŠKODA</h2>
+        <p class="lead fs-5">Škoda Auto, often shortened to Škoda, is a Czech automobile manufacturer established in 1925 as the successor to Laurin & Klement and headquartered in Mladá Boleslav, Czech Republic. Škoda Works became state owned in 1948. After 1991, 
+        it was gradually privatized to the German Volkswagen Group, becoming a partial subsidiary in 1994 and a wholly owned subsidiary in 2000.</p>
+        <p><a class="btn btn-success btn-lg" href="https://www.skoda.co.uk">Learn more &raquo;</a></p>
     </div>
 </div>
