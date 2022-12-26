@@ -1,0 +1,42 @@
+﻿@model IEnumerable<RentaCar.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1 class="mt-5">Customers</h1>
+
+<p class="h4 mt-3">
+    @Html.ActionLink("Add Customer", "Create")
+</p>
+
+<table class="table  table-striped mt-5">
+    <tr class="table-dark fs-5">
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DriverLicNo)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="table-light  fs-4 ">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DriverLicNo)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CustomerId }, new { @class = "nav-item text-decoration-none text-warning " })  |
+                @Html.ActionLink("Details", "Details", new { id = item.CustomerId }, new { @class = "nav-item text-decoration-none text-primary " })  |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CustomerId }, new { @class = "nav-item text-decoration-none text-danger " })
+            </td>
+        </tr>
+    }
+
+</table>

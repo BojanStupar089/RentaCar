@@ -1,0 +1,32 @@
+﻿@model RentaCar.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="mt-5">
+    <h3>Customer Details</h3>
+    <hr />
+    <dl class="fs-4">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DriverLicNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DriverLicNo)
+        </dd>
+
+    </dl>
+</div>
+<p class="fs-5">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerId }) |
+    @Html.ActionLink("Back to Customers", "Index")
+</p>
