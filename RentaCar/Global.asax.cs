@@ -1,3 +1,5 @@
+using AutoMapper;
+using RentaCar.App_Start;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +17,13 @@ namespace RentaCar
     {
         protected void Application_Start()
         {
+            
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Mapper.Initialize(c => c.AddProfile<MappingProfile>());
         }
     }
 }
