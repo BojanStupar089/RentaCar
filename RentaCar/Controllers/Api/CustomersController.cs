@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace RentaCar.Controllers.Api
@@ -16,17 +15,13 @@ namespace RentaCar.Controllers.Api
         private RentaCarEntities _context;
         public CustomersController() {
 
-
-            _context = new RentaCarEntities();
+         _context = new RentaCarEntities();
         }
 
 
-        public IEnumerable<CustomerDto> GetCustomers() {
-
-
-
+        public IEnumerable<CustomerDto> GetCustomer(){
+            
             return _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
-        
         }
 
         public IHttpActionResult GetCustomer(int id) {
@@ -42,23 +37,18 @@ namespace RentaCar.Controllers.Api
         }
 
         [HttpPost]
-
         public IHttpActionResult CreateCustomer(CustomerDto customerDto) {
 
             if (!ModelState.IsValid) {
-
-                return BadRequest();
+               return BadRequest();
             }
 
             var customer = Mapper.Map<CustomerDto, Customer>(customerDto);
-
             _context.Customers.Add(customer);
             _context.SaveChanges();
 
             customerDto.CustomerId = customer.CustomerId;
-
             return Created(new Uri(Request.RequestUri + "/" + customer.CustomerId), customerDto);
-        
         }
 
 
@@ -68,13 +58,11 @@ namespace RentaCar.Controllers.Api
             if (!ModelState.IsValid)
             throw new HttpResponseException(HttpStatusCode.BadRequest);
             
-
             var customer = _context.Customers.SingleOrDefault(c => c.CustomerId == id);
 
             if (customer == null) 
             throw new HttpResponseException(HttpStatusCode.NotFound);
             
-
             customer.Name = customerDto.Name;
             customer.DriverLicNo = customer.DriverLicNo;
 
@@ -84,7 +72,6 @@ namespace RentaCar.Controllers.Api
 
 
         [HttpDelete]
-
         public void DeleteCustomer(int id) {
 
             var customer = _context.Customers.SingleOrDefault(c => c.CustomerId == id);
@@ -92,7 +79,6 @@ namespace RentaCar.Controllers.Api
             if (customer == null)
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             
-
             _context.Customers.Remove(customer);
             _context.SaveChanges();
 
