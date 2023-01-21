@@ -49,7 +49,11 @@ namespace RentaCar.Controllers.Api
             _context.SaveChanges();
 
             rentalDto.RentalId = rental.RentalId;
-            return Created(new Uri(Request.RequestUri + "/" + rental.RentalId), rentalDto);
+
+            rental.Customer.Name = rentalDto.CustomerName;
+            rental.Car.Model = rentalDto.CarModel;
+           
+            return Created(new Uri(Request.RequestUri + "/" + rental.RentalId),rentalDto);
         }
 
 
