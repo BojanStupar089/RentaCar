@@ -216,6 +216,7 @@
     <Compile Include="Models\Rental.cs">
       <DependentUpon>RentaCarEDM.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>RentaCarEDM.tt</DependentUpon>
     </Compile>
