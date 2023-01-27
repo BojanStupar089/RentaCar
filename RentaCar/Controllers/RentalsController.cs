@@ -37,6 +37,7 @@ namespace RentaCar.Controllers
         }
 
         // GET: Rentals/Create
+        [Authorize(Roles ="Admin,Employee")]
         public ActionResult Create()
         {
             ViewBag.CarId = new SelectList(db.Cars, "CarId", "Model");
@@ -47,6 +48,7 @@ namespace RentaCar.Controllers
         // POST: Rentals/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "RentalId,CustomerId,CarId,DateRented,DateReturned")] Rental rental)
