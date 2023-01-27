@@ -169,7 +169,7 @@ namespace RentaCar.Controllers
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
                     return RedirectToAction("Index", "Home");
                 }
-                ViewBag.Name = new SelectList(_context.Roles.Where(u => u.Name.Contains(Role.Admin)).ToList(), "Name", "Name");
+                ViewBag.Name = new SelectList(_context.Roles.Where(u =>!u.Name.Contains(Role.Admin)).ToList(), "Name", "Name");
                 AddErrors(result);
             }
 
