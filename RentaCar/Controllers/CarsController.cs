@@ -17,7 +17,10 @@ namespace RentaCar.Controllers
         // GET: Cars
         public ActionResult Index()
         {
+            if(User.IsInRole(Role.Admin)|| User.IsInRole(Role.Employee))
             return View(db.Cars.ToList());
+
+            return View("ReadOnlyList");
         }
 
         // GET: Cars/Details/5
@@ -35,7 +38,30 @@ namespace RentaCar.Controllers
             return View(car);
         }
 
+        public ActionResult GetData()
+        {
+
+            List<Car> lst = db.Cars.ToList();
+
+            var cars = lst.Select(c => new
+            {
+
+                CardId = c.CarId,
+                Model = c.Model,
+                Manufacturer = c.Manufacturer,
+                LicensePlate = c.LicensePlate,
+                Year = c.Year,
+                Available = c.Available
+
+            });
+
+            return Json(new { data = cars }, JsonRequestBehavior.AllowGet);
+
+        }
+
         // GET: Cars/Create
+
+        [Authorize(Roles ="Admin,Employee")]
         public ActionResult Create()
         {
             return View();
@@ -44,6 +70,7 @@ namespace RentaCar.Controllers
         // POST: Cars/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CarId,Manufacturer,Model,LicensePlate,Year,Available")] Car car)
@@ -59,6 +86,7 @@ namespace RentaCar.Controllers
         }
 
         // GET: Cars/Edit/5
+        [Authorize(Roles = "Admin,Employee")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -76,6 +104,7 @@ namespace RentaCar.Controllers
         // POST: Cars/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CarId,Manufacturer,Model,LicensePlate,Year,Available")] Car car)
@@ -90,6 +119,7 @@ namespace RentaCar.Controllers
         }
 
         // GET: Cars/Delete/5
+        [Authorize(Roles = "Admin,Employee")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,6 +135,7 @@ namespace RentaCar.Controllers
         }
 
         // POST: Cars/Delete/5
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
