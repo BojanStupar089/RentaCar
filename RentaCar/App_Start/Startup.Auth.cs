@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Google;
 using Owin;
 using RentaCar.Models;
 
@@ -50,19 +51,19 @@ namespace RentaCar
             //    clientId: "",
             //    clientSecret: "");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            app.UseTwitterAuthentication(
+               consumerKey: "vsm8rjsjSIXDGKRO3cIMkFoN0",
+               consumerSecret: "5nrw7tD33p1J6zUYK1EfiZ7w82i7u3Q4vnw1AvVawpeuDd0FZr");
 
             app.UseFacebookAuthentication(
                appId: "586341439504366",
                appSecret: "7a0e16557cbeb8598683e42876069240");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "600937257225-tkjejvt5b6r0oud5vbi578bukpou92ob.apps.googleusercontent.com",
+               ClientSecret = "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"
+            });
         }
     }
 }
