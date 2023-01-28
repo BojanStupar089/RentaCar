@@ -46,7 +46,7 @@ namespace RentaCar.Controllers
             var cars = lst.Select(c => new
             {
 
-                CardId = c.CarId,
+                CarId = c.CarId,
                 Model = c.Model,
                 Manufacturer = c.Manufacturer,
                 LicensePlate = c.LicensePlate,

@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<RentaCar.Models.Car>
+
 @{
     ViewBag.Title = "ReadOnlyList";
 }
@@ -7,28 +7,31 @@
 <h1 class="mt-5">Cars ReadOnly</h1>
 
 <table id="cars" class="table  table-striped mt-5">
-    <tr class="table-dark fs-5">
+    <thead>
+    <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Manufacturer)
+         Manufacturer
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Model)
+           Model
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LicensePlate)
+           License Plate
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Year)
+          Year
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Available)
+           Available
         </th>
         <th></th>
     </tr>
-    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        </thead>
+    <tbody></tbody>
+    </table>
 
-</table>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
 @section scripts{
 
@@ -37,7 +40,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
 
     <script>
-    $document.ready(function () {
+    $(document).ready(function () {
 
         var table = $("#cars").DataTable({
 
@@ -57,7 +60,7 @@
                     "data": "CarId", "render": function (data) {
 
                         var myUrl = '@Url.Action("Details","Cars")/' + data;
-                        return '<a href=\"' + myUrl + '\"class=\"btn btn-default btn-sm\">Details</a>';
+                        return '<a href=\"' + myUrl + '\"class=\"btn btn-default btn-sm text-primary\">Details</a>';
                     }
                 }
             ],

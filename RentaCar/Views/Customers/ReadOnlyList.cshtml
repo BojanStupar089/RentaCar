@@ -1,6 +1,4 @@
 ﻿
-@model IEnumerable<RentaCar.Models.Customer>
-
 @{
     ViewBag.Title = "ReadOnlyList";
 }
@@ -8,18 +6,22 @@
 <h1 class="mt-5">Customers read only</h1>
 
 <table id="customers" class="table  table-striped mt-5">
-    <tr class="table-dark fs-5">
+    <thead>
+    <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DriverLicNo)
+            DriverLicNo
         </th>
+        <th></th>
     </tr>
-    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+        <thead>
+   
     <tbody></tbody>
 </table>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
 @section scripts{
 
@@ -28,7 +30,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
 
     <script>
-        $document.ready(function () {
+        $(document).ready(function () {
 
             var table = $('#customers').DataTable({
                 "ajax": {
@@ -43,7 +45,7 @@
                         {
                         "data": "CustomerId","render": function (data) {
                              var myUrl = '@Url.Action("Details","Customers")/' + data;
-                        return '<a href=\"' + myUrl + '\"class=\"btn btn-default btn-sm\">Details</a>';
+                        return '<a href=\"' + myUrl + '\"class=\"btn btn-default btn-sm text-primary\">Details</a>';
 
                         }
 
