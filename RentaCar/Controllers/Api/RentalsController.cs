@@ -50,7 +50,7 @@ namespace RentaCar.Controllers.Api
 
             rentalDto.RentalId = rental.RentalId;
 
-            return Created(new Uri(Request.RequestUri + "/" + rental.RentalId),rentalDto);
+         return Created(new Uri(Request.RequestUri + "/" + rental.RentalId),rentalDto);
         }
 
 
