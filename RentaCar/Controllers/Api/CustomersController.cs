@@ -64,7 +64,7 @@ namespace RentaCar.Controllers.Api
             throw new HttpResponseException(HttpStatusCode.NotFound);
             
             customer.Name = customerDto.Name;
-            customer.DriverLicNo = customer.DriverLicNo;
+            customer.DriverLicNo = customerDto.DriverLicNo;
 
             _context.SaveChanges();
 
