@@ -44,15 +44,12 @@ namespace RentaCar.Controllers.Api
             }
 
             var rental = Mapper.Map<RentalDto, Rental>(rentalDto);
-
+            
             _context.Rentals.Add(rental);
-            _context.SaveChanges();
+           _context.SaveChanges();
 
             rentalDto.RentalId = rental.RentalId;
 
-            rental.Customer.Name = rentalDto.CustomerName;
-            rental.Car.Model = rentalDto.CarModel;
-           
             return Created(new Uri(Request.RequestUri + "/" + rental.RentalId),rentalDto);
         }
 
@@ -70,8 +67,6 @@ namespace RentaCar.Controllers.Api
             
             rental.CustomerId = rentalDto.CustomerId;
             rental.CarId = rentalDto.CarId;
-            rental.Customer.Name = rentalDto.CustomerName;
-            rental.Car.Model = rentalDto.CarModel;
             rental.DateRented = rentalDto.DateRented;
             rental.DateReturned = rentalDto.DateReturned;
 
