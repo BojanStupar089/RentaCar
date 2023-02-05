@@ -49,7 +49,7 @@ namespace RentaCar
                 }
 
             }
-            else if (!roleManager.RoleExists(Role.Employee))
+          else if (!roleManager.RoleExists(Role.Employee))
             {
 
                 var role = new IdentityRole();
@@ -57,11 +57,10 @@ namespace RentaCar
                 roleManager.Create(role);
             }
 
-        else //if(!roleManager.RoleExists(Role.Employee))
+        else
             {
 
-
-                var role = new IdentityRole();
+               var role = new IdentityRole();
                 role.Name = Role.User;
                 roleManager.Create(role);
 
