@@ -30,18 +30,18 @@ namespace RentaCar
                 var role = new IdentityRole();
                 role.Name = Role.Admin;
 
-                roleManager.Create(role); /// napravio si role Admin.
+                roleManager.Create(role); 
 
                 // kreiras super admina
                 var user = new ApplicationUser();
                 user.UserName = "bokiadmin44@gmail.com";
                 user.Email = "bokiadmin44@gmail.com";
-                // user.LockoutEnabled = true;
+               
                 string userPWD = "Bokica.89";
 
-                var chkUser = UserManager.Create(user, userPWD); // kreiran super admin
+                var chkUser = UserManager.Create(user, userPWD); 
 
-                // add default User to Role Admin
+              
                 if (chkUser.Succeeded)
                 {
 
